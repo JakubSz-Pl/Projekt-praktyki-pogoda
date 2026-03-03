@@ -13,17 +13,17 @@
     <header>
         <h1>Prognoza Pogody</h1>
         <div class="input-group mb-3">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="changeLocation()">Location Update</button>
-            <input type="text" class="locationInput form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <button class="btn btn-outline-secondary" type="button" onclick="changeLocation()">Location Update</button>
+            <input type="text" class="locationInput form-control" placeholder="" >
         </div>
     </header>
 
     <main>
 
-        <section id="chart-section">
+        <section class="chart-section">
             <h2>Wykres temperatury</h2>
-            <div id="chart-container">
-                <canvas id="weatherChart"></canvas>
+            <div class="chart-container">
+                <canvas class="weatherChart"></canvas>
             </div>
         </section>
 
@@ -32,7 +32,7 @@
         <section id="table-data" class="container mt-5">
     <div class="text-center mb-4">
         <h2 class="fw-bold">Prognoza na 5 dni</h2>
-        <h4 id="location" class="text-muted">Przykład</h4>
+        <h4 id="location" class="locationStyle">Przykład</h4>
     </div>
 
     <div class="table-responsive">

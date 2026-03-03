@@ -1,15 +1,20 @@
-#weatherChart{
+.weatherChart {
     height: 20vw;
-    background-color: #1e1e2f;
-    
+    display: block; 
+    background-color: #e3ba3d;
 }
-#chart-container{
+
+.chart-container {
+    border: 10px solid #e3ba3d;
+    border-radius: 10px;
     width: fit-content;
-    margin: auto;
-    background-color: #1e1e2f;
+    margin: 10px auto;
 }
 
-
+.chart-section {
+    padding: 60px 0;
+    text-align: center;
+}
 
 body {
     background: #ffe066;
@@ -48,10 +53,7 @@ border: 1px solid black;
     color: white;
 }
 
-#chart-section {
-    padding: 60px 0;
-    text-align: center;
-}
+
 
 #chart-container {
     background: white;
@@ -79,4 +81,13 @@ border: 1px solid black;
 .custom-yellow p {
     margin: 4px 0;
     font-size: 0.9rem;
+}
+.locationStyle{
+    background-color: #e3ba3d;
+    margin: auto;
+    width: fit-content;
+    padding:10px;
+    border-radius: 10%;
+    color: #000000 !;
+    
 }

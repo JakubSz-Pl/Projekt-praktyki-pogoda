@@ -1,4 +1,4 @@
-const apiKey = "";
+const apiKey = "5bc794f045a5b618fe7551d6454f2c9e";
 let locationCity = "tel aviv";
 let weatherChart;
 
@@ -32,13 +32,15 @@ async function changeLocation() {
 
     if (weatherData.length > 0) {
         document.querySelector("table").style.display = "table";
-        document.getElementById("location").innerText = value;
+        document.getElementById("chart-section").style.display = "block";
+        document.getElementById("location").innerText = capitalizeFirstLetter(locationCity);
         updateChart();
         updateData();
     } else {
         document.getElementById("location").innerText = "Nie znaleziono miasta";
         console.log("Nie znaleziono miasta");
         document.querySelector("table").style.display = "none";
+        document.getElementById("chart-section").style.display = "none";
     }
 }
 
@@ -46,7 +48,7 @@ async function generateChart(){
 
 const xValues = ["Dzień 1","Dzień 2","Dzień 3","Dzień 4","Dzień 5"];
 
-const ctx = document.getElementById('weatherChart');
+const ctx = document.getElementsByClassName('weatherChart');
 
 let chartDaysData = await getWeather(); 
 
@@ -63,21 +65,23 @@ weatherChart = new Chart(ctx, {
           chartDaysData[3].main.temp,
           chartDaysData[4].main.temp
         ],
-        borderColor: "#4FC3F7",
-        backgroundColor: "rgba(79,195,247,0.1)",
+        borderColor: "#2e3320",
+        backgroundColor: "rgba(36, 44, 14, 0.1)",
         fill: true,
         borderWidth: 3,
-        pointBackgroundColor: "#4FC3F7",
-        pointBorderColor: "#ffffff",
+        pointBackgroundColor: "#292306",
+        pointBorderColor: "#3a3616",
         pointBorderWidth: 2,
         pointRadius: 4,
         pointHoverRadius: 7,
         tension: 0.4
+        
       }
     ]
   },
   options: {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false
@@ -86,7 +90,7 @@ weatherChart = new Chart(ctx, {
     scales: {
       x: {
         ticks: {
-          color: "#bbbbbb",
+          color: "#000000",
           font: {
             size: 12
           }
@@ -97,17 +101,23 @@ weatherChart = new Chart(ctx, {
       },
       y: {
         ticks: {
-          color: "#bbbbbb",
+          color: "#000000",
 
         },
         grid: {
-          color: "rgba(255,255,255,0.05)"
+          color: "rgba(0, 0, 0, 0.05)"
         }
       }
-    }
+    },
   }
 });
 }
+
+
+function capitalizeFirstLetter(str) {
+return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 async function updateChart() {
     const newChartData = await getWeather();
 
