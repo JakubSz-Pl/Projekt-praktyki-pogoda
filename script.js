@@ -1,5 +1,9 @@
-const apiKey = "";
-let locationCity = "Warsaw";
+const apiKey = "5bc794f045a5b618fe7551d6454f2c9e";
+let locationCity = "tel aviv";
+let weatherChart;
+
+
+
 
 document.getElementById("location").innerText = locationCity;
 async function getWeather() {
@@ -29,6 +33,7 @@ async function changeLocation() {
     if (weatherData.length > 0) {
         document.querySelector("table").style.display = "table";
         document.getElementById("location").innerText = value;
+        updateChart();
         updateData();
     } else {
         document.getElementById("location").innerText = "Nie znaleziono miasta";
@@ -37,9 +42,50 @@ async function changeLocation() {
     }
 }
 
+async function generateChart(){
+
+const xValues = ["Dzien 1","Dzien 2","Dzien 3","Dzien 4","Dzien 5"];
+
+const ctx = document.getElementById('weatherChart');
+
+let chartDaysData = await getWeather();
+weatherChart = new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{ 
+      data: [chartDaysData[0].main.temp,chartDaysData[1].main.temp,chartDaysData[2].main.temp,chartDaysData[3].main.temp,chartDaysData[4].main.temp],
+      borderColor: "yellow",
+      pointRadius: 2,
+      tension: 0.4,
+    }]
+  },
+  options: {
+    plugins: {
+      legend: { display: false }
+    }
+  }
+});
+}
+
+async function updateChart() {
+    const newChartData = await getWeather();
+
+    weatherChart.data.datasets[0].data = [
+        newChartData[0].main.temp,
+        newChartData[1].main.temp,
+        newChartData[2].main.temp,
+        newChartData[3].main.temp,
+        newChartData[4].main.temp
+    ];
+
+    weatherChart.update();
+}
 
 
+generateChart();
 updateData();
+
 
 
 async function changeTemp() {
@@ -92,12 +138,10 @@ async function changeWindSpeed() {
     }
 }
 
+
 function updateData(){
 changeFeelTemp();
 changePressure();
 changeTemp();
 changeWindSpeed();
 }
-
-
-
