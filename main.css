@@ -1,0 +1,82 @@
+#weatherChart{
+    height: 20vw;
+    background-color: #1e1e2f;
+    
+}
+#chart-container{
+    width: fit-content;
+    margin: auto;
+    background-color: #1e1e2f;
+}
+
+
+
+body {
+    background: #ffe066;
+}
+
+
+header {
+    background: #ffc107;
+    padding: 40px 0;
+    text-align: center;
+    color: #000000;
+}
+
+header h1 {
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+
+table, th, td {
+border: 1px solid black;
+}
+
+.input-group {
+    max-width: 500px;
+    margin: auto;
+}
+
+.btn-outline-secondary {
+    border-color: #000000;
+    color: #000000;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #000000;
+    color: white;
+}
+
+#chart-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+#chart-container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.custom-yellow {
+    background-color: #fff3bf; 
+    border-color: #e0a800;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.custom-yellow thead {
+    background-color: #ffc107;
+    color: #000000;
+    font-weight: 600;
+}
+
+.custom-yellow td {
+    padding: 20px;
+}
+
+.custom-yellow p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+}

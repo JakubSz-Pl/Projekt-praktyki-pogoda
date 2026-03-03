@@ -1,4 +1,4 @@
-const apiKey = "5bc794f045a5b618fe7551d6454f2c9e";
+const apiKey = "";
 let locationCity = "tel aviv";
 let weatherChart;
 
@@ -44,30 +44,70 @@ async function changeLocation() {
 
 async function generateChart(){
 
-const xValues = ["Dzien 1","Dzien 2","Dzien 3","Dzien 4","Dzien 5"];
+const xValues = ["Dzień 1","Dzień 2","Dzień 3","Dzień 4","Dzień 5"];
 
 const ctx = document.getElementById('weatherChart');
 
-let chartDaysData = await getWeather();
+let chartDaysData = await getWeather(); 
+
 weatherChart = new Chart(ctx, {
   type: "line",
   data: {
     labels: xValues,
-    datasets: [{ 
-      data: [chartDaysData[0].main.temp,chartDaysData[1].main.temp,chartDaysData[2].main.temp,chartDaysData[3].main.temp,chartDaysData[4].main.temp],
-      borderColor: "yellow",
-      pointRadius: 2,
-      tension: 0.4,
-    }]
+    datasets: [
+      {
+        data: [
+          chartDaysData[0].main.temp,
+          chartDaysData[1].main.temp,
+          chartDaysData[2].main.temp,
+          chartDaysData[3].main.temp,
+          chartDaysData[4].main.temp
+        ],
+        borderColor: "#4FC3F7",
+        backgroundColor: "rgba(79,195,247,0.1)",
+        fill: true,
+        borderWidth: 3,
+        pointBackgroundColor: "#4FC3F7",
+        pointBorderColor: "#ffffff",
+        pointBorderWidth: 2,
+        pointRadius: 4,
+        pointHoverRadius: 7,
+        tension: 0.4
+      }
+    ]
   },
   options: {
+    responsive: true,
     plugins: {
-      legend: { display: false }
+      legend: {
+        display: false
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: "#bbbbbb",
+          font: {
+            size: 12
+          }
+        },
+        grid: {
+          display: false
+        }
+      },
+      y: {
+        ticks: {
+          color: "#bbbbbb",
+
+        },
+        grid: {
+          color: "rgba(255,255,255,0.05)"
+        }
+      }
     }
   }
 });
 }
-
 async function updateChart() {
     const newChartData = await getWeather();
 

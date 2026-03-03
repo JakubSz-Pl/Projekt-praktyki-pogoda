@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strona Pogodowa</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
     <header>
         <h1>Prognoza Pogody</h1>
-        <input type="text" class="locationInput"><button onclick="changeLocation()">Location Update</button>
+        <div class="input-group mb-3">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon1" onclick="changeLocation()">Location Update</button>
+            <input type="text" class="locationInput form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+        </div>
     </header>
 
     <main>
@@ -18,48 +23,44 @@
         <section id="chart-section">
             <h2>Wykres temperatury</h2>
             <div id="chart-container">
-                
-                <canvas id="weatherChart" style="width: 75%;max-height:500px"></canvas>
+                <canvas id="weatherChart"></canvas>
             </div>
         </section>
 
-        <section id="table-data">
-            <h2>Prognoza na 5 dni:<h3 id="location">Przyklad</h3></h2>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Dzień 1</th>
-                        <th>Dzień 2</th>
-                        <th>Dzień 3</th>
-                        <th>Dzień 4</th>
-                        <th>Dzień 5</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <p class="temp">Temperatura</p><p class="pressure">Cisnienie</p><p class="feelsLikeTemp">Odczuwalna Temperatura</p><p class="windSpeed">Odczuwalna Temperatura</p>
-                        </td>
-                        <td>
-                            <p class="temp">Temperatura</p><p class="pressure">Cisnienie</p><p class="feelsLikeTemp">Odczuwalna Temperatura</p><p class="windSpeed">Odczuwalna Temperatura</p>
-                        </td>
-                        <td>
-                            <p class="temp">Temperatura</p><p class="pressure">Cisnienie</p><p class="feelsLikeTemp">Odczuwalna Temperatura</p><p class="windSpeed">Odczuwalna Temperatura</p>
-                        </td>
-                        <td>
-                            <p class="temp">Temperatura</p><p class="pressure">Cisnienie</p><p class="feelsLikeTemp">Odczuwalna Temperatura</p><p class="windSpeed">Odczuwalna Temperatura</p>
-                        </td>
-                        <td>
-                            <p class="temp">Temperatura</p><p class="pressure">Cisnienie</p><p class="feelsLikeTemp">Odczuwalna Temperatura</p><p class="windSpeed">Odczuwalna Temperatura</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
 
-        </section>  
+
+        <section id="table-data" class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">Prognoza na 5 dni</h2>
+        <h4 id="location" class="text-muted">Przykład</h4>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table text-center align-middle custom-yellow">
+            <thead>
+                <tr>
+                    <th>Dzień 1</th>
+                    <th>Dzień 2</th>
+                    <th>Dzień 3</th>
+                    <th>Dzień 4</th>
+                    <th>Dzień 5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><p class="temp">Temperatura</p><p class="pressure">Ciśnienie</p><p class="feelsLikeTemp">Odczuwalna</p><p class="windSpeed">Wiatr</p></td>
+                    <td><p class="temp">Temperatura</p><p class="pressure">Ciśnienie</p><p class="feelsLikeTemp">Odczuwalna</p><p class="windSpeed">Wiatr</p></td>
+                    <td><p class="temp">Temperatura</p><p class="pressure">Ciśnienie</p><p class="feelsLikeTemp">Odczuwalna</p><p class="windSpeed">Wiatr</p></td>
+                    <td><p class="temp">Temperatura</p><p class="pressure">Ciśnienie</p><p class="feelsLikeTemp">Odczuwalna</p><p class="windSpeed">Wiatr</p></td>
+                    <td><p class="temp">Temperatura</p><p class="pressure">Ciśnienie</p><p class="feelsLikeTemp">Odczuwalna</p><p class="windSpeed">Wiatr</p></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
 
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
