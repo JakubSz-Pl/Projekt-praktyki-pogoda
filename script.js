@@ -1,15 +1,10 @@
-const apiKey = "5bc794f045a5b618fe7551d6454f2c9e";
+const apiKey = "";
 let locationCity = "Warsaw";
 
-
-
-
-
+document.getElementById("location").innerText = locationCity;
 async function getWeather() {
     try {
-        const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/forecast?q=${locationCity}&appid=${apiKey}&units=metric&lang=pl`
-        );
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${locationCity}&appid=${apiKey}&units=metric&lang=pl`);
         const data = await response.json();
         let daysData = [];
         for (let i = 0; i < data.list.length; i += 8) {
@@ -17,11 +12,34 @@ async function getWeather() {
         }
         console.log(daysData)
         return daysData;
+        
     } catch (error) {
         console.error("Error:", error);
         return [];
     }
 }
+
+async function changeLocation() {
+    let input = document.querySelector(".locationInput");
+    let value = input.value.trim();
+    locationCity = value;
+    
+    const weatherData = await getWeather();
+
+    if (weatherData.length > 0) {
+        document.querySelector("table").style.display = "table";
+        document.getElementById("location").innerText = value;
+        updateData();
+    } else {
+        document.getElementById("location").innerText = "Nie znaleziono miasta";
+        console.log("Nie znaleziono miasta");
+        document.querySelector("table").style.display = "none";
+    }
+}
+
+
+
+updateData();
 
 
 async function changeTemp() {
@@ -74,23 +92,12 @@ async function changeWindSpeed() {
     }
 }
 
-changeFeelTemp();
-changePressure();
-changeTemp();
-changeWindSpeed();
-
-
-
-
-function changeLocation() {
-    let input = document.querySelector(".locationInput");
-    let value = input.value;
-
-    document.getElementById("location").innerText = value;
-    locationCity = value;
-    
+function updateData(){
 changeFeelTemp();
 changePressure();
 changeTemp();
 changeWindSpeed();
 }
+
+
+
