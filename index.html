@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Pogodowa</title>
+</head>
+<body>
+
+
+    <header>
+        <h1>Prognoza Pogody</h1>
+    </header>
+
+    <main>
+
+        <section id="chart-section">
+            <h2>Wykres temperatury</h2>
+            <div id="chart-container">
+                <canvas id="weatherChart"></canvas>
+            </div>
+        </section>
+
+        <section id="table-data">
+            <h2>Prognoza na 5 dni:<h3 id="location">Przyklad</h3></h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dzień 1</th>
+                        <th>Dzień 2</th>
+                        <th>Dzień 3</th>
+                        <th>Dzień 4</th>
+                        <th>Dzień 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="temp">Temperatura</p><p id="pressure">Cisnienie</p><p id="feelsLikeTemp">Odczuwalna Temperatura</p><p id="windDay">Odczuwalna Temperatura</p>
+                        </td>
+                        <td>
+                            <p class="temp">Temperatura</p><p id="pressure">Cisnienie</p><p id="feelsLikeTemp">Odczuwalna Temperatura</p><p id="windDay">Odczuwalna Temperatura</p>
+                        </td>
+                        <td>
+                            <p class="temp">Temperatura</p><p id="pressure">Cisnienie</p><p id="feelsLikeTemp">Odczuwalna Temperatura</p><p id="windDay">Odczuwalna Temperatura</p>
+                        </td>
+                        <td>
+                            <p class="temp">Temperatura</p><p id="pressure">Cisnienie</p><p id="feelsLikeTemp">Odczuwalna Temperatura</p><p id="windDay">Odczuwalna Temperatura</p>
+                        </td>
+                        <td>
+                            <p class="temp">Temperatura</p><p id="pressure">Cisnienie</p><p id="feelsLikeTemp">Odczuwalna Temperatura</p><p id="windDay">Odczuwalna Temperatura</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>  
+
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
