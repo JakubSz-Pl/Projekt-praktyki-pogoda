@@ -49,10 +49,10 @@ function showContent(){
 }
 
 function hideContent(){
-        document.querySelector("table").style.display = "table";
-        document.querySelector(".chart-section").style.display = "block";
-        document.querySelector(".fw-bold").style.display = "block";
-        document.getElementById("location").innerText = capitalizeFirstLetter(locationCity);
+        document.querySelector("table").style.display = "none";
+        document.querySelector(".chart-section").style.display = "none";
+        document.querySelector(".fw-bold").style.display = "none";
+        document.getElementById("location").innerText = "Nie znaleziono Miasta";
 }
 
 

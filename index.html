@@ -9,27 +9,34 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
+    <!--========================= HEADER=======================-->
     <header>
         <h1>Prognoza Pogody</h1>
+        <!-- Wyszukiwarka miast-->
         <div class="input-group mb-3">
-            <button class="btn btn-outline-secondary" type="button" onclick="changeLocation()"><img src="images/locationmarker.png" alt="" style="width: 20px;"></button>
+            <button class="btn btn-outline-secondary" type="button" onclick="changeLocation()">
+                <img src="images/locationmarker.png" alt="" style="width: 20px;">
+            </button>
             <input type="text" class="locationInput form-control" placeholder="" >
         </div>
-
-            <div>
+            <!-- Przyciski Light Dark mode-->
+        <div>
             <button class="lightMode btn-outline-secondary " onclick="toggleLightMode()" >Dark Mode</button>
-            </div>
+        </div>
     </header>
 
+
+    <!--========================= MAIN CONTENT=======================-->
 <main class="content-wrapper">
 
-    <section class="glass-card">
+    <!-- KARTA TABELI-->
+    <section class="glass-card"> 
+        <!-- TYTUL TABELI-->
         <div class="locationStyle">
-            <h2 class="fw-bold">Prognoza na 5 dni</h2>
+            <h2 class="fw-bold">Prognoza na 5 dni</h2> 
             <h4 id="location">Warszawa</h4>
         </div>
-
+        <!-- TABELA -->
         <div class="table-responsive">
             <table class="table text-center align-middle custom-table">
                 <thead>
@@ -78,9 +85,10 @@
                 </tbody>
             </table>
         </div>
-    </section>
 
-    <section class="glass-card chart-section">
+    </section>
+    <!-- KARTA WYKRESU-->
+    <section class="glass-card chart-section"> 
         <h2>Wykres temperatury</h2>
         <div class="chart-container">
             <canvas class="weatherChart"></canvas>
