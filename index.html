@@ -18,7 +18,7 @@
         </div>
 
             <div>
-            <input type="checkbox">
+            <button class="lightMode btn-outline-secondary" onclick="toggleLightMode()" >Dark Mode</button>
             </div>
     </header>
 
@@ -43,6 +43,7 @@
         <table class="table text-center align-middle custom-table">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Dzień 1</th>
                     <th>Dzień 2</th>
                     <th>Dzień 3</th>
@@ -51,14 +52,39 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><p class="temp">Temperatura</p><p class="pressure">Ciśnienie</p><p class="feelsLikeTemp">Odczuwalna</p><p class="windSpeed">Wiatr</p></td>
-                    <td><p class="temp">Temperatura</p><p class="pressure">Ciśnienie</p><p class="feelsLikeTemp">Odczuwalna</p><p class="windSpeed">Wiatr</p></td>
-                    <td><p class="temp">Temperatura</p><p class="pressure">Ciśnienie</p><p class="feelsLikeTemp">Odczuwalna</p><p class="windSpeed">Wiatr</p></td>
-                    <td><p class="temp">Temperatura</p><p class="pressure">Ciśnienie</p><p class="feelsLikeTemp">Odczuwalna</p><p class="windSpeed">Wiatr</p></td>
-                    <td><p class="temp">Temperatura</p><p class="pressure">Ciśnienie</p><p class="feelsLikeTemp">Odczuwalna</p><p class="windSpeed">Wiatr</p></td>
-                </tr>
-            </tbody>
+        <tr>
+            <th>Temperatura</th>
+            <td class="temp"></td>
+            <td class="temp"></td>
+            <td class="temp"></td>
+            <td class="temp"></td>
+            <td class="temp"></td>
+        </tr>
+        <tr>
+            <th>Ciśnienie</th>
+            <td class="pressure"></td>
+            <td class="pressure"></td>
+            <td class="pressure"></td>
+            <td class="pressure"></td>
+            <td class="pressure"></td>
+        </tr>
+        <tr>
+            <th>Temp. Odczuwalna</th>
+            <td class="feelsLikeTemp"></td>
+            <td class="feelsLikeTemp"></td>
+            <td class="feelsLikeTemp"></td>
+            <td class="feelsLikeTemp"></td>
+            <td class="feelsLikeTemp"></td>
+        </tr>
+        <tr>
+            <th>Wiatr</th>
+            <td class="windSpeed"></td>
+            <td class="windSpeed"></td>
+            <td class="windSpeed"></td>
+            <td class="windSpeed"></td>
+            <td class="windSpeed"></td>
+        </tr>
+    </tbody>
         </table>
     </div>
 </section>

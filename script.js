@@ -1,7 +1,7 @@
 const apiKey = "";
 let locationCity = "Tel aviv";
 let weatherChart;
-
+let isDark = true;
 
 
 
@@ -22,6 +22,24 @@ async function getWeather() {
         return [];
     }
 }
+
+
+function toggleLightMode() {
+
+  document.body.classList.toggle("light");
+  
+  if(isDark == true){
+    document.querySelector(".lightMode").innerHTML = "Light Mode"
+    isDark = false;
+  }else{
+    document.querySelector(".lightMode").innerHTML = "Dark Mode"
+    isDark = true;
+  }
+}
+
+
+
+
 
 async function changeLocation() {
     let input = document.querySelector(".locationInput");

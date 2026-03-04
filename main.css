@@ -1,10 +1,15 @@
 :root {
   --primary-color: #011e31a8;   
   --secondary-color: #09134883; 
-  --accent-color: #e74c3c;    
   --text-color: #dadada;      
+
 }
 
+body.light {
+  --primary-color: #ccd3f7;
+  --secondary-color: #b0bec7;
+  --text-color: #111;
+}
 
 
 
@@ -59,6 +64,7 @@ header h1 {
 .btn-outline-secondary {
     border-color: var(--text-color);
     color: var(--text-color);
+    background-color: var(--secondary-color);
 }
 
 .btn-outline-secondary:hover {
