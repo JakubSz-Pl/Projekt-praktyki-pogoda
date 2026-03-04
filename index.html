@@ -13,13 +13,17 @@
     <header>
         <h1>Prognoza Pogody</h1>
         <div class="input-group mb-3">
-            <button class="btn btn-outline-secondary" type="button" onclick="changeLocation()">Location Update</button>
+            <button class="btn btn-outline-secondary" type="button" onclick="changeLocation()"><img src="images/locationmarker.png" alt="" style="width: 20px;"></button>
             <input type="text" class="locationInput form-control" placeholder="" >
         </div>
+
+            <div>
+            <input type="checkbox">
+            </div>
     </header>
 
-    <main>
-
+    <main class="content-wrapper">
+        
         <section class="chart-section">
             <h2>Wykres temperatury</h2>
             <div class="chart-container">
@@ -29,14 +33,14 @@
 
 
 
-        <section id="table-data" class="container mt-5">
-    <div class="text-center mb-4">
+    <section id="table-data" class="container mt-5">
+    <div class="text-center mb-4 locationStyle">
         <h2 class="fw-bold">Prognoza na 5 dni</h2>
-        <h4 id="location" class="locationStyle">Przykład</h4>
+        <h4 id="location">Przykład</h4>
     </div>
 
     <div class="table-responsive">
-        <table class="table text-center align-middle custom-yellow">
+        <table class="table text-center align-middle custom-table">
             <thead>
                 <tr>
                     <th>Dzień 1</th>
