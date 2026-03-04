@@ -6,12 +6,12 @@ document.getElementById("location").innerText = locationCity;
 
 
 
-// Pobranie danych z api i wporwadzenie ich do tabeli co jeden dzien
 
 async function getWeather() {
     try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${locationCity}&appid=${apiKey}&units=metric&lang=pl`);
         const data = await response.json();
+        document.getElementById("location").innerText = data.city.name;
         let daysData = [];
         for (let i = 0; i < data.list.length; i += 8) {
             daysData.push(data.list[i]);
@@ -45,7 +45,6 @@ function showContent(){
         document.querySelector("table").style.display = "table";
         document.querySelector(".chart-section").style.display = "block";
         document.querySelector(".fw-bold").style.display = "block";
-        document.getElementById("location").innerText = capitalizeFirstLetter(locationCity);
 }
 
 function hideContent(){
@@ -66,8 +65,9 @@ async function changeLocation() {
     const weatherData = await getWeather();
 
     if (weatherData.length > 0) {
-        showContent()
+        showContent();
         updateData();
+        
     } else {
         hideContent()
     }
@@ -146,12 +146,6 @@ weatherChart = new Chart(ctx, {
 });
 }
 
-
-
-//pomocnicza funkcja do pierwszej wielkej litery
-function capitalizeFirstLetter(str) {
-return str.charAt(0).toUpperCase() + str.slice(1);
-}
 
 
 //aktualzowanie wykresu
