@@ -1,14 +1,30 @@
 :root {
+  --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  --text-color: #ffffff;
   --glass-bg: rgba(255, 255, 255, 0.08);
   --glass-border: rgba(255, 255, 255, 0.2);
-  --text-color: #ffffff;
+  --btn-hover: rgba(255, 255, 255, 0.2);
+  --table-row-bg: rgba(255, 255, 255, 0.08);
 }
+
+/* ===== LIGHT THEME ===== */
+body.light {
+  --bg-gradient: linear-gradient(135deg, #e0eafc, #cfdef3, #f5f7fa);
+  --text-color: #111111;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --btn-hover: rgba(255, 255, 255, 0.9);
+  --table-row-bg: rgba(255, 255, 255, 0.6);
+}
+
 
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background: url("images/backgroundImage.jpg") #b0b0b027;
+    background-repeat: no-repeat;
   background-size: cover;
+  background-color: rgb(144, 144, 144);
   min-height: 100vh;
   color: var(--text-color);
 }
@@ -91,7 +107,7 @@ header h1 {
 
 .custom-table {
   background: transparent;
-  color: white;
+  color: var(--text-color);
 }
 
 .custom-table thead {

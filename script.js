@@ -1,11 +1,13 @@
-const apiKey = "5bc794f045a5b618fe7551d6454f2c9e";
+const apiKey = "";
 let locationCity = "Tel aviv";
 let weatherChart;
 let isDark = true;
-
-
-
 document.getElementById("location").innerText = locationCity;
+
+
+
+// Pobranie danych z api i wporwadzenie ich do tabeli co jeden dzien
+
 async function getWeather() {
     try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${locationCity}&appid=${apiKey}&units=metric&lang=pl`);
@@ -23,6 +25,7 @@ async function getWeather() {
     }
 }
 
+//zmiana light mode / dark mode 
 
 function toggleLightMode() {
 
@@ -38,8 +41,22 @@ function toggleLightMode() {
 }
 
 
+function showContent(){
+        document.querySelector("table").style.display = "table";
+        document.querySelector(".chart-section").style.display = "block";
+        document.querySelector(".fw-bold").style.display = "block";
+        document.getElementById("location").innerText = capitalizeFirstLetter(locationCity);
+}
+
+function hideContent(){
+        document.querySelector("table").style.display = "table";
+        document.querySelector(".chart-section").style.display = "block";
+        document.querySelector(".fw-bold").style.display = "block";
+        document.getElementById("location").innerText = capitalizeFirstLetter(locationCity);
+}
 
 
+//update lokacji po wyszukaniu
 
 async function changeLocation() {
     let input = document.querySelector(".locationInput");
@@ -49,28 +66,24 @@ async function changeLocation() {
     const weatherData = await getWeather();
 
     if (weatherData.length > 0) {
-        document.querySelector("table").style.display = "table";
-        document.querySelector(".chart-section").style.display = "block";
-        document.querySelector(".fw-bold").style.display = "block";
-        document.getElementById("location").innerText = capitalizeFirstLetter(locationCity);
-        updateChart();
+        showContent()
         updateData();
     } else {
-        document.getElementById("location").innerText = "Nie znaleziono miasta";
-        console.log("Nie znaleziono miasta");
-        document.querySelector(".fw-bold").style.display = "none";
-        document.querySelector("table").style.display = "none";
-        document.querySelector(".chart-section").style.display = "none";
+        hideContent()
     }
 }
 
+
+
+
+//stworzenie wykresu
 async function generateChart(){
 
 const xValues = ["Dzień 1","Dzień 2","Dzień 3","Dzień 4","Dzień 5"];
 
 const ctx = document.getElementsByClassName('weatherChart');
 
-let chartDaysData = await getWeather(); 
+let chartDaysData = await getWeather();  //wlasna lokalna tabela
 
 weatherChart = new Chart(ctx, {
   type: "line",
@@ -135,11 +148,13 @@ weatherChart = new Chart(ctx, {
 
 
 
-
+//pomocnicza funkcja do pierwszej wielkej litery
 function capitalizeFirstLetter(str) {
 return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+
+//aktualzowanie wykresu
 async function updateChart() {
     const newChartData = await getWeather();
 
@@ -157,6 +172,11 @@ async function updateChart() {
 
 generateChart();
 updateData();
+
+
+
+
+//Aktualizowanie danych w tabeli - funkcje//
 
 
 
@@ -209,11 +229,12 @@ async function changeWindSpeed() {
         }
     }
 }
-
+//update tabeli oraz wykresu//
 
 function updateData(){
 changeFeelTemp();
 changePressure();
 changeTemp();
 changeWindSpeed();
+updateChart()
 }
