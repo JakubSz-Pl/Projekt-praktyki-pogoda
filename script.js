@@ -1,4 +1,4 @@
-const apiKey = "";
+const apiKey = "5bc794f045a5b618fe7551d6454f2c9e";
 let locationCity = "Tel aviv";
 let weatherChart;
 let isDark = true;

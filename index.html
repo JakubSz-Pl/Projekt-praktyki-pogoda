@@ -22,74 +22,72 @@
             </div>
     </header>
 
-    <main class="content-wrapper">
-        
-        <section class="chart-section">
-            <h2>Wykres temperatury</h2>
-            <div class="chart-container">
-                <canvas class="weatherChart"></canvas>
-            </div>
-        </section>
+<main class="content-wrapper">
 
+    <section class="glass-card">
+        <div class="locationStyle">
+            <h2 class="fw-bold">Prognoza na 5 dni</h2>
+            <h4 id="location">Warszawa</h4>
+        </div>
 
+        <div class="table-responsive">
+            <table class="table text-center align-middle custom-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Dzień 1</th>
+                        <th>Dzień 2</th>
+                        <th>Dzień 3</th>
+                        <th>Dzień 4</th>
+                        <th>Dzień 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Temperatura</th>
+                        <td class="temp"></td>
+                        <td class="temp"></td>
+                        <td class="temp"></td>
+                        <td class="temp"></td>
+                        <td class="temp"></td>
+                    </tr>
+                    <tr>
+                        <th>Ciśnienie</th>
+                        <td class="pressure"></td>
+                        <td class="pressure"></td>
+                        <td class="pressure"></td>
+                        <td class="pressure"></td>
+                        <td class="pressure"></td>
+                    </tr>
+                    <tr>
+                        <th>Temp. Odczuwalna</th>
+                        <td class="feelsLikeTemp"></td>
+                        <td class="feelsLikeTemp"></td>
+                        <td class="feelsLikeTemp"></td>
+                        <td class="feelsLikeTemp"></td>
+                        <td class="feelsLikeTemp"></td>
+                    </tr>
+                    <tr>
+                        <th>Wiatr</th>
+                        <td class="windSpeed"></td>
+                        <td class="windSpeed"></td>
+                        <td class="windSpeed"></td>
+                        <td class="windSpeed"></td>
+                        <td class="windSpeed"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-    <section id="table-data" class="container mt-5">
-    <div class="text-center mb-4 locationStyle">
-        <h2 class="fw-bold">Prognoza na 5 dni</h2>
-        <h4 id="location">Przykład</h4>
-    </div>
+    <section class="glass-card chart-section">
+        <h2>Wykres temperatury</h2>
+        <div class="chart-container">
+            <canvas class="weatherChart"></canvas>
+        </div>
+    </section>
 
-    <div class="table-responsive">
-        <table class="table text-center align-middle custom-table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Dzień 1</th>
-                    <th>Dzień 2</th>
-                    <th>Dzień 3</th>
-                    <th>Dzień 4</th>
-                    <th>Dzień 5</th>
-                </tr>
-            </thead>
-            <tbody>
-        <tr>
-            <th>Temperatura</th>
-            <td class="temp"></td>
-            <td class="temp"></td>
-            <td class="temp"></td>
-            <td class="temp"></td>
-            <td class="temp"></td>
-        </tr>
-        <tr>
-            <th>Ciśnienie</th>
-            <td class="pressure"></td>
-            <td class="pressure"></td>
-            <td class="pressure"></td>
-            <td class="pressure"></td>
-            <td class="pressure"></td>
-        </tr>
-        <tr>
-            <th>Temp. Odczuwalna</th>
-            <td class="feelsLikeTemp"></td>
-            <td class="feelsLikeTemp"></td>
-            <td class="feelsLikeTemp"></td>
-            <td class="feelsLikeTemp"></td>
-            <td class="feelsLikeTemp"></td>
-        </tr>
-        <tr>
-            <th>Wiatr</th>
-            <td class="windSpeed"></td>
-            <td class="windSpeed"></td>
-            <td class="windSpeed"></td>
-            <td class="windSpeed"></td>
-            <td class="windSpeed"></td>
-        </tr>
-    </tbody>
-        </table>
-    </div>
-</section>
-
-    </main>
+</main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
