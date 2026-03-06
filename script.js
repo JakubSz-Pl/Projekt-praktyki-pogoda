@@ -1,31 +1,107 @@
-const apiKey = "";
 let locationCity = "Tel aviv";
 let weatherChart;
 let isDark = true;
 document.getElementById("location").innerText = locationCity;
 
+import { getApiKey } from './config.js';
+
+console.log();
+const apiKey = getApiKey();
+
+//update lokacji po wyszukaniu
+
+document.getElementById("buttonChangeLocation").addEventListener("click", changeLocation);
+
+async function changeLocation() {
+    let input = document.querySelector(".locationInput");
+    let value = input.value.trim();
+    locationCity = value;
+    const weatherData = await getWeatherForecast();
+
+    if (weatherData.length > 0) {
+        showContent()
+        updateData();
+    } else {
+        hideContent()
+    }
+}
+
+//obsluga ladowania
+
+function showLoading(){
+    document.getElementById("loading").style.display = "block";
+    
+}
+
+function hideLoading(){
+    document.getElementById("loading").style.display = "none";
+}
+
+function showError(errorText){
+  document.querySelector("#error").style.display = "block";
+  document.querySelector(".errortext").innerHTML = errorText;
+}
 
 
 
-async function getWeather() {
-    try {
+
+
+
+async function getWeatherForecast() {
+
+    hideContent();
+    showLoading();
         const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${locationCity}&appid=${apiKey}&units=metric&lang=pl`);
         const data = await response.json();
+<<<<<<< Updated upstream
         document.getElementById("location").innerText = data.city.name;
+=======
+        hideLoading();
+         if(response.status == 404){
+            showError("Nie znaleziono miasta");
+            hideContent();
+            return[];
+        }if ( response.status == 400) {
+            showError("Złe zapytanie");
+            hideContent();
+            return[];
+        }if ( response.status == 401) {
+            showError("Zły klucz api");
+            hideContent();
+            return[];
+        } else  {
+          showContent();
+>>>>>>> Stashed changes
         let daysData = [];
         for (let i = 0; i < data.list.length; i += 8) {
             daysData.push(data.list[i]);
         }
-        console.log(daysData)
         return daysData;
-        
-    } catch (error) {
-        console.error("Error:", error);
-        return [];
-    }
+        }
+
 }
 
+
+//Get current weather//
+
+async function getCurrentWeather() {
+  try{
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationCity}&appid=${apiKey}&units=metric&lang=pl`);
+        const data = await response.json();
+        console.log(data)
+        document.getElementById("location").innerText = data.name;
+        return data;
+  }catch(error){
+    console.log(error)
+  }
+}
+
+
+
+
 //zmiana light mode / dark mode 
+
+document.getElementById("buttonChangeDarkMode").addEventListener("click", toggleLightMode);
 
 function toggleLightMode() {
 
@@ -42,6 +118,7 @@ function toggleLightMode() {
 
 
 function showContent(){
+<<<<<<< Updated upstream
         document.querySelector("table").style.display = "table";
         document.querySelector(".chart-section").style.display = "block";
         document.querySelector(".fw-bold").style.display = "block";
@@ -52,11 +129,21 @@ function hideContent(){
         document.querySelector(".chart-section").style.display = "none";
         document.querySelector(".fw-bold").style.display = "none";
         document.getElementById("location").innerText = "Nie znaleziono Miasta";
+=======
+        document.querySelector("main").style.display = "grid";
+        document.querySelector(".utility").style.display = "none"
+        document.querySelector("#error").style.display = "none";
+}
+
+function hideContent(){
+        document.querySelector("main").style.display = "none";
+        document.querySelector(".utility").style.display = "block"
+>>>>>>> Stashed changes
 }
 
 
-//update lokacji po wyszukaniu
 
+<<<<<<< Updated upstream
 async function changeLocation() {
     let input = document.querySelector(".locationInput");
     let value = input.value.trim();
@@ -72,6 +159,8 @@ async function changeLocation() {
         hideContent()
     }
 }
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -83,7 +172,7 @@ const xValues = ["Dzień 1","Dzień 2","Dzień 3","Dzień 4","Dzień 5"];
 
 const ctx = document.getElementsByClassName('weatherChart');
 
-let chartDaysData = await getWeather();  //wlasna lokalna tabela
+let chartDaysData = await getWeatherForecast();  //wlasna lokalna tabela
 
 weatherChart = new Chart(ctx, {
   type: "line",
@@ -150,7 +239,7 @@ weatherChart = new Chart(ctx, {
 
 //aktualzowanie wykresu
 async function updateChart() {
-    const newChartData = await getWeather();
+    const newChartData = await getWeatherForecast();
 
     weatherChart.data.datasets[0].data = [
         newChartData[0].main.temp,
@@ -174,9 +263,9 @@ updateData();
 
 
 
-async function changeTemp() {
+async function changeTempForecast() {
 
-    const daysData = await getWeather(locationCity);
+    const daysData = await getWeatherForecast();
 
     const daysListTemp = document.getElementsByClassName("temp");
 
@@ -187,9 +276,9 @@ async function changeTemp() {
     }
 }
 
-async function changePressure() {
+async function changePressureForecast() {
 
-    const daysData = await getWeather(locationCity);
+    const daysData = await getWeatherForecast();
 
     const daysListTemp = document.getElementsByClassName("pressure");
 
@@ -199,9 +288,9 @@ async function changePressure() {
         }
     }
 }
-async function changeFeelTemp() {
+async function changeFeelTempForecast() {
 
-    const daysData = await getWeather(locationCity);
+    const daysData = await getWeatherForecast();
 
     const daysListTemp = document.getElementsByClassName("feelsLikeTemp");
 
@@ -211,24 +300,29 @@ async function changeFeelTemp() {
         }
     }
 }
-async function changeWindSpeed() {
 
-    const daysData = await getWeather(locationCity);
+//Pobranie aktualnej pogody//
 
-    const daysListTemp = document.getElementsByClassName("windSpeed");
 
-    for (let i = 0; i < daysListTemp.length; i++) {
-        if (daysData[i]) {
-            daysListTemp[i].innerHTML = daysData[i] .wind.speed + "km/h";
-        }
-    }
+
+async function updateCurrentWeather() {
+  let data = await getCurrentWeather();
+  document.querySelector("#currentTemp").innerHTML = data.main.temp ;
+  document.querySelector("#currentHumidity").innerHTML = data.main.humidity;
+  document.querySelector("#currentFeels").innerHTML = data.main.feels_like;
+  document.querySelector("#currentPressure").innerHTML = data.main.pressure ;
 }
+
+
+
+
 //update tabeli oraz wykresu//
 
+
 function updateData(){
-changeFeelTemp();
-changePressure();
-changeTemp();
-changeWindSpeed();
+changeFeelTempForecast();
+changePressureForecast();
+changeTempForecast();
 updateChart()
+updateCurrentWeather();
 }

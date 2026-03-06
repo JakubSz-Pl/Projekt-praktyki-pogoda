@@ -14,6 +14,7 @@
         <h1>Prognoza Pogody</h1>
         <!-- Wyszukiwarka miast-->
         <div class="input-group mb-3">
+<<<<<<< Updated upstream
             <button class="btn btn-outline-secondary" type="button" onclick="changeLocation()">
                 <img src="images/locationmarker.png" alt="" style="width: 20px;">
             </button>
@@ -23,12 +24,36 @@
         <div>
             <button class="lightMode btn-outline-secondary " onclick="toggleLightMode()" >Dark Mode</button>
         </div>
+=======
+            <button class="btn btn-outline-secondary" type="button" id="buttonChangeLocation"><img src="images/locationmarker.png" alt="" style="width: 20px;"></button>
+            <input type="text" class="locationInput form-control" placeholder="" >
+        </div>
+
+            <div>
+            <button class="lightMode btn-outline-secondary" id="buttonChangeDarkMode" >Dark Mode</button>
+            </div>
+>>>>>>> Stashed changes
     </header>
+    
+    
+    <section class="glass-card utility">
+            <div id="loading" class="text-center">
+               <p>Ładowanie danych...</p>
+            </div>
+            <div id="error" class="text-center text-danger">
+                <p class="errortext">Błąd pobierania danych</p>
+            </div>
+    </section>
+
+
+
+
 
 
     <!--========================= MAIN CONTENT=======================-->
 <main class="content-wrapper">
 
+<<<<<<< Updated upstream
     <!-- KARTA TABELI-->
     <section class="glass-card"> 
         <!-- TYTUL TABELI-->
@@ -37,6 +62,24 @@
             <h4 id="location">Warszawa</h4>
         </div>
         <!-- TABELA -->
+=======
+    <section class="glass-card">
+        
+        <div class="locationStyle">
+            <h3 id="location">Warszawa</h4>
+            
+        </div>
+        <div class="current-weather glass-card-small">
+    <h4>Aktualna pogoda</h4>
+    <div class="current-weather-data">
+        <p><strong>Temperatura:</strong> <span id="currentTemp">--</span> °C</p>
+        <p><strong>Odczuwalna:</strong> <span id="currentFeels">--</span> °C</p>
+        <p><strong>Ciśnienie:</strong> <span id="currentPressure">--</span> hPa</p>
+        <p><strong>Wilgotność:</strong> <span id="currentHumidity">--</span> %</p>
+    </div>
+</div>
+        <h4 class="fw-bold">Prognoza na 5 dni</h2>
+>>>>>>> Stashed changes
         <div class="table-responsive">
             <table class="table text-center align-middle custom-table">
                 <thead>
@@ -74,14 +117,6 @@
                         <td class="feelsLikeTemp"></td>
                         <td class="feelsLikeTemp"></td>
                     </tr>
-                    <tr>
-                        <th>Wiatr</th>
-                        <td class="windSpeed"></td>
-                        <td class="windSpeed"></td>
-                        <td class="windSpeed"></td>
-                        <td class="windSpeed"></td>
-                        <td class="windSpeed"></td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -97,6 +132,6 @@
 
 </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="script.js" type="module" ></script>
 </body>
 </html>
